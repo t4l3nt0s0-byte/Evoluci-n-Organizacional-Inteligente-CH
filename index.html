@@ -585,22 +585,145 @@ footer{background:#04111D;padding:60px 5% 32px;}
           <div class="contact-feat"><div class="contact-feat-icon">✅</div><div class="contact-feat-text"><strong>Constancias y documentación STPS</strong>DC-3 y DC-4 incluidos en servicios de capacitación</div></div>
         </div>
       </div>
+
       <div class="contact-form reveal reveal-delay-2">
-        <div class="form-title">Solicita tu diagnóstico gratuito</div>
-        <div class="form-grid">
-          <div class="form-group"><label class="form-label">Nombre completo</label><input type="text" class="form-input" placeholder="Tu nombre"></div>
-          <div class="form-group"><label class="form-label">Empresa</label><input type="text" class="form-input" placeholder="Nombre de la empresa"></div>
-          <div class="form-group"><label class="form-label">Correo electrónico</label><input type="email" class="form-input" placeholder="correo@empresa.com"></div>
-          <div class="form-group"><label class="form-label">Teléfono / WhatsApp</label><input type="tel" class="form-input" placeholder="+52 55 1234 5678"></div>
-          <div class="form-group full"><label class="form-label">Sector / Industria</label><select class="form-select"><option value="">Selecciona tu industria</option><option>Manufactura</option><option>Logística y Distribución</option><option>Retail</option><option>Servicios</option><option>Automotriz</option><option>Metal mecánica</option><option>Otro</option></select></div>
-          <div class="form-group full"><label class="form-label">¿Qué necesitas mejorar?</label><select class="form-select"><option value="">Selecciona el servicio de interés</option><option>Sistema de Gestión de Calidad (ISO 9001)</option><option>Lean Six Sigma / Mejora Continua</option><option>Capacitación Empresarial (STPS)</option><option>Seguridad e Higiene NOM-STPS</option><option>Análisis de Datos y KPIs</option><option>Auditorías Internas</option><option>Diagnóstico general</option></select></div>
-          <div class="form-group full"><label class="form-label">Cuéntanos brevemente tu situación</label><textarea class="form-textarea" placeholder="¿Cuál es el principal reto que enfrenta tu área de calidad u operaciones hoy?"></textarea></div>
-        </div>
-        <button class="form-submit" onclick="handleSubmit()">Solicitar Diagnóstico Gratuito →</button>
-      </div>
-    </div>
+
+  <div class="form-title">
+    Solicita tu diagnóstico gratuito
   </div>
-</section>
+
+  <form id="formDiagnostico">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label class="form-label">Nombre completo</label>
+        <input 
+          type="text"
+          id="nombre"
+          class="form-input"
+          placeholder="Tu nombre"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Empresa</label>
+        <input 
+          type="text"
+          id="empresa"
+          class="form-input"
+          placeholder="Nombre de la empresa">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Correo electrónico</label>
+        <input 
+          type="email"
+          id="email"
+          class="form-input"
+          placeholder="correo@empresa.com"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Teléfono / WhatsApp</label>
+        <input 
+          type="tel"
+          id="telefono"
+          class="form-input"
+          placeholder="+52 55 1234 5678"
+          required>
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label">Sector / Industria</label>
+
+        <select id="sector" class="form-select">
+
+          <option value="">
+            Selecciona tu industria
+          </option>
+
+          <option>Manufactura</option>
+          <option>Logística y Distribución</option>
+          <option>Retail</option>
+          <option>Servicios</option>
+          <option>Automotriz</option>
+          <option>Metal mecánica</option>
+          <option>Otro</option>
+
+        </select>
+      </div>
+
+      <div class="form-group full">
+
+        <label class="form-label">
+          ¿Qué necesitas mejorar?
+        </label>
+
+        <select id="servicio" class="form-select">
+
+          <option value="">
+            Selecciona el servicio de interés
+          </option>
+
+          <option>
+            Sistema de Gestión de Calidad (ISO 9001)
+          </option>
+
+          <option>
+            Lean Six Sigma / Mejora Continua
+          </option>
+
+          <option>
+            Capacitación Empresarial (STPS)
+          </option>
+
+          <option>
+            Seguridad e Higiene NOM-STPS
+          </option>
+
+          <option>
+            Análisis de Datos y KPIs
+          </option>
+
+          <option>
+            Auditorías Internas
+          </option>
+
+          <option>
+            Diagnóstico general
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="form-group full">
+
+        <label class="form-label">
+          Cuéntanos brevemente tu situación
+        </label>
+
+        <textarea
+          id="mensaje"
+          class="form-textarea"
+          placeholder="¿Cuál es el principal reto que enfrenta tu área de calidad u operaciones hoy?">
+        </textarea>
+
+      </div>
+
+    </div>
+
+    <button type="submit" class="form-submit">
+      Solicitar Diagnóstico Gratuito →
+    </button>
+
+  </form>
+
+</div>
+    <!-- Actualizacion -->  
+   
 
 <!-- FOOTER -->
 <footer>
@@ -673,5 +796,46 @@ function handleSubmit(){const btn=document.querySelector('.form-submit');btn.tex
 window.addEventListener('scroll',()=>{const y=window.scrollY;document.querySelectorAll('.hero-orb').forEach((o,i)=>o.style.transform=`translateY(${y*(0.15+i*0.05)}px)`);});
 document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`translateY(-4px) rotateX(${-y*3}deg) rotateY(${x*3}deg)`;});card.addEventListener('mouseleave',()=>card.style.transform='');});
 </script>
+
+ <script>
+document
+.getElementById("formDiagnostico")
+.addEventListener("submit", async function(e){
+  e.preventDefault();
+  const button = document.querySelector(".form-submit");
+  button.disabled = true;
+  button.innerText = "Enviando...";
+  const data = {
+    nombre: document.getElementById("nombre").value,
+    empresa: document.getElementById("empresa").value,
+    email: document.getElementById("email").value,
+    telefono: document.getElementById("telefono").value,
+    sector: document.getElementById("sector").value,
+    servicio: document.getElementById("servicio").value,
+    mensaje: document.getElementById("mensaje").value
+  };
+  try {
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbw-DP7JrG1_Y27jOn0E7Al7SRIcOCoQcAPoxlbPII_XSEZidsiyGp61qEpAzvzM8oNY/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(data)
+      }
+    );
+    const result = await response.json();
+    if(result.result === "success"){
+      alert("Diagnóstico enviado correctamente");
+      document
+      .getElementById("formDiagnostico")
+      .reset();
+    }
+  } catch(error){
+    console.error(error);
+    alert("Error al enviar formulario");
+  }
+  button.disabled = false;
+  button.innerText = "Solicitar Diagnóstico Gratuito →";
+});
+</script>     
 </body>
 </html>
