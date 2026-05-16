@@ -797,45 +797,72 @@ window.addEventListener('scroll',()=>{const y=window.scrollY;document.querySelec
 document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`translateY(-4px) rotateX(${-y*3}deg) rotateY(${x*3}deg)`;});card.addEventListener('mouseleave',()=>card.style.transform='');});
 </script>
 
- <script>
+<script>
+
 document
 .getElementById("formDiagnostico")
 .addEventListener("submit", async function(e){
+
   e.preventDefault();
+
   const button = document.querySelector(".form-submit");
+
   button.disabled = true;
+
   button.innerText = "Enviando...";
+
   const data = {
+
     nombre: document.getElementById("nombre").value,
+
     empresa: document.getElementById("empresa").value,
+
     email: document.getElementById("email").value,
+
     telefono: document.getElementById("telefono").value,
+
     sector: document.getElementById("sector").value,
+
     servicio: document.getElementById("servicio").value,
+
     mensaje: document.getElementById("mensaje").value
+
   };
+
   try {
-    const response = await fetch(
+
+    await fetch(
       "https://script.google.com/macros/s/AKfycbw-DP7JrG1_Y27jOn0E7Al7SRIcOCoQcAPoxlbPII_XSEZidsiyGp61qEpAzvzM8oNY/exec",
       {
         method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(data)
       }
     );
-    const result = await response.json();
-    if(result.result === "success"){
-      alert("Diagnóstico enviado correctamente");
-      document
-      .getElementById("formDiagnostico")
-      .reset();
-    }
+
+    alert("Diagnóstico enviado correctamente");
+
+    document
+    .getElementById("formDiagnostico")
+    .reset();
+
   } catch(error){
+
     console.error(error);
+
     alert("Error al enviar formulario");
+
   }
+
   button.disabled = false;
+
   button.innerText = "Solicitar Diagnóstico Gratuito →";
+
 });
-</script>     
+
+</script>
 </body>
 </html>
