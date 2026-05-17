@@ -902,38 +902,25 @@ document.addEventListener('DOMContentLoaded', function () {
   let horarios = "";
 
   citas.forEach(c => {
-
     if(c.fecha == info.dateStr){
-
-      horarios += `
-
-${c.estado === "LIBRE"
+horarios +=
+`${c.estado === "LIBRE"
 ? "🟢"
-: "🔴"}
-
-${c.hora}
-
-${c.estado === "OCUPADO"
+: "🔴"} ${c.hora} ${
+c.estado === "OCUPADO"
 ? c.nombre
-: "Disponible"}
-
-`;
-
+: "Disponible"
+}\n`;
     }
-
   });
 
+          
   alert(
-
     "Fecha: " +
     info.dateStr +
-
     "\n\n" +
-
     horarios
-
   );
-
 }
       });
   calendar.render();
