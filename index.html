@@ -943,14 +943,6 @@ footer{background:#04111D;padding:60px 5% 32px;}
 
 <script>
 
-
-// ─── Form submit
-document.querySelector('.form-submit').addEventListener('click', () => {
-  document.querySelector('.form-submit').textContent = '✓ Solicitud enviada';
-  document.querySelector('.form-submit').style.background = '#22c55e';
-});
-
-
      
 <script>
 const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
@@ -1035,6 +1027,13 @@ console.log("ENVIANDO FETCH");
   button.innerText =
   "Solicitar Diagnóstico Gratuito →";
 });
+  
+// ─── Form submit
+document.querySelector('.form-submit').addEventListener('click', () => {
+  document.querySelector('.form-submit').textContent = '✓ Solicitud enviada';
+  document.querySelector('.form-submit').style.background = '#22c55e';
+});
+
 </script>
 
     
