@@ -306,159 +306,7 @@ footer{background:#04111D;padding:60px 5% 32px;}
 }
 
 
-  /* =========================
-   FORMATO CALENDARIO PROFESIONAL
-========================= */
-
-#agenda{
-  background: linear-gradient(
-    135deg,
-    var(--deep) 0%,
-    var(--ink) 100%
-  );
-  padding:100px 5%;
-  position:relative;
-  overflow:hidden;
-}
-
-#agenda::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-  radial-gradient(
-    ellipse at 20% 20%,
-    rgba(11,143,173,.12) 0%,
-    transparent 60%
-  );
-}
-
-#agenda h2{
-  font-family:var(--font-display);
-  font-size:42px;
-  color:white;
-  margin-bottom:40px;
-  text-align:center;
-}
-
-#calendar{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:24px;
-  padding:30px;
-  backdrop-filter:blur(20px);
-  box-shadow:
-    0 10px 40px rgba(0,0,0,.25);
-}
-
-/* Toolbar */
-.fc .fc-toolbar-title{
-  color:white;
-  font-family:var(--font-display);
-  font-size:28px;
-}
-
-.fc .fc-button{
-  background:linear-gradient(
-    135deg,
-    var(--teal),
-    var(--ocean)
-  ) !important;
-
-  border:none !important;
-
-  color:white !important;
-
-  border-radius:10px !important;
-
-  padding:10px 16px !important;
-
-  font-weight:600;
-}
-
-.fc .fc-button:hover{
-  transform:translateY(-2px);
-}
-
-/* Días */
-.fc-theme-standard td,
-.fc-theme-standard th{
-  border:1px solid rgba(255,255,255,.08);
-}
-
-/* Fondo calendario */
-.fc-theme-standard .fc-scrollgrid{
-  border:none;
-}
-
-/* Nombre días */
-.fc-col-header-cell-cushion{
-  color:var(--teal2);
-  text-decoration:none;
-  font-weight:700;
-  padding:10px 0;
-}
-
-/* Números días */
-.fc-daygrid-day-number{
-  color:white;
-  text-decoration:none;
-  padding:10px;
-  font-weight:600;
-}
-
-/* Hover día */
-.fc-daygrid-day:hover{
-  background:rgba(11,143,173,.08);
-  cursor:pointer;
-  transition:.2s;
-}
-
-/* Día actual */
-.fc-day-today{
-  background:
-    rgba(11,143,173,.15)
-    !important;
-}
-
-/* Eventos */
-.fc-event{
-  background:var(--teal) !important;
-  border:none !important;
-  border-radius:8px !important;
-  padding:4px 6px;
-  font-size:12px;
-}
-
-/* Texto general */
-.fc{
-  color:white;
-}
-
-/* Responsive */
-@media(max-width:768px){
-
-  #calendar{
-    padding:12px;
-  }
-
-  .fc .fc-toolbar{
-    flex-direction:column;
-    gap:12px;
-  }
-
-  .fc .fc-toolbar-title{
-    font-size:22px;
-  }
-
-}
-
-
-  
-</style>
-  <!-- AGREGADO CALENDARIO -->
-  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css' rel='stylesheet' />
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+ 
 
 </head>
 <body>
@@ -1065,7 +913,159 @@ document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener(
 </script>
 
 
+ /* =========================
+   FORMATO CALENDARIO PROFESIONAL
+========================= */
 
+#agenda{
+  background: linear-gradient(
+    135deg,
+    var(--deep) 0%,
+    var(--ink) 100%
+  );
+  padding:100px 5%;
+  position:relative;
+  overflow:hidden;
+}
+
+#agenda::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+  radial-gradient(
+    ellipse at 20% 20%,
+    rgba(11,143,173,.12) 0%,
+    transparent 60%
+  );
+}
+
+#agenda h2{
+  font-family:var(--font-display);
+  font-size:42px;
+  color:white;
+  margin-bottom:40px;
+  text-align:center;
+}
+
+#calendar{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:24px;
+  padding:30px;
+  backdrop-filter:blur(20px);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,.25);
+}
+
+/* Toolbar */
+.fc .fc-toolbar-title{
+  color:white;
+  font-family:var(--font-display);
+  font-size:28px;
+}
+
+.fc .fc-button{
+  background:linear-gradient(
+    135deg,
+    var(--teal),
+    var(--ocean)
+  ) !important;
+
+  border:none !important;
+
+  color:white !important;
+
+  border-radius:10px !important;
+
+  padding:10px 16px !important;
+
+  font-weight:600;
+}
+
+.fc .fc-button:hover{
+  transform:translateY(-2px);
+}
+
+/* Días */
+.fc-theme-standard td,
+.fc-theme-standard th{
+  border:1px solid rgba(255,255,255,.08);
+}
+
+/* Fondo calendario */
+.fc-theme-standard .fc-scrollgrid{
+  border:none;
+}
+
+/* Nombre días */
+.fc-col-header-cell-cushion{
+  color:var(--teal2);
+  text-decoration:none;
+  font-weight:700;
+  padding:10px 0;
+}
+
+/* Números días */
+.fc-daygrid-day-number{
+  color:white;
+  text-decoration:none;
+  padding:10px;
+  font-weight:600;
+}
+
+/* Hover día */
+.fc-daygrid-day:hover{
+  background:rgba(11,143,173,.08);
+  cursor:pointer;
+  transition:.2s;
+}
+
+/* Día actual */
+.fc-day-today{
+  background:
+    rgba(11,143,173,.15)
+    !important;
+}
+
+/* Eventos */
+.fc-event{
+  background:var(--teal) !important;
+  border:none !important;
+  border-radius:8px !important;
+  padding:4px 6px;
+  font-size:12px;
+}
+
+/* Texto general */
+.fc{
+  color:white;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+  #calendar{
+    padding:12px;
+  }
+
+  .fc .fc-toolbar{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .fc .fc-toolbar-title{
+    font-size:22px;
+  }
+
+}
+
+
+  
+</style>
+  <!-- AGREGADO CALENDARIO -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
 
       
 </body>
