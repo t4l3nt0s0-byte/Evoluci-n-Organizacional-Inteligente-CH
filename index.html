@@ -269,233 +269,22 @@ section{padding:100px 5%;}
 .form-submit:hover{transform:translateY(-2px);box-shadow:0 14px 48px rgba(11,143,173,.5);}
 
 /* FOOTER */
-
-footer{
-  background:#04111D;
-  padding:70px 5% 30px;
-  position:relative;
-  overflow:hidden;
-}
-
-footer::before{
-  content:'';
-  position:absolute;
-  inset:0;
-
-  background:
-  radial-gradient(
-    ellipse at top left,
-    rgba(11,143,173,.10),
-    transparent 60%
-  );
-
-  pointer-events:none;
-}
-
-.footer-inner{
-  max-width:1200px;
-  margin:0 auto;
-  position:relative;
-  z-index:1;
-}
-
-.footer-top{
-
-  display:grid;
-
-  grid-template-columns:
-  2fr 1fr 1fr 1.4fr;
-
-  gap:50px;
-
-  padding-bottom:40px;
-
-  border-bottom:
-  1px solid rgba(255,255,255,.08);
-
-}
-
-/* LOGO */
-
-.footer-logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px;
-}
-
-.footer-logo-icon{
-  width:42px;
-  height:42px;
-  flex-shrink:0;
-}
-
-.footer-logo-name{
-  font-family:var(--font-display);
-  font-size:22px;
-  font-weight:700;
-  color:white;
-}
-
-.footer-tagline{
-  color:rgba(255,255,255,.55);
-  line-height:1.8;
-  font-size:14px;
-  max-width:320px;
-}
-
-.footer-slogan{
-  margin-top:14px;
-  color:var(--teal2);
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  font-weight:700;
-}
-
-/* TITULOS */
-
-.footer-col-title{
-
-  font-size:11px;
-
-  color:rgba(255,255,255,.35);
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  margin-bottom:18px;
-
-  font-weight:700;
-
-}
-
-/* LINKS */
-
-.footer-links{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.footer-links a{
-
-  color:rgba(255,255,255,.55);
-
-  text-decoration:none;
-
-  font-size:14px;
-
-  transition:.2s;
-
-}
-
-.footer-links a:hover{
-  color:white;
-  transform:translateX(3px);
-}
-
-/* CONTACTO */
-
-.footer-contact-item{
-
-  display:flex;
-
-  align-items:flex-start;
-
-  gap:10px;
-
-  margin-bottom:16px;
-
-  color:rgba(255,255,255,.55);
-
-  font-size:14px;
-
-  line-height:1.6;
-
-  word-break:break-word;
-
-  overflow-wrap:break-word;
-
-}
-
-.footer-contact-item span{
-
-  flex-shrink:0;
-
-  font-size:16px;
-
-  margin-top:2px;
-
-}
-
-/* CORREO */
-
-.footer-contact-item a{
-
-  color:rgba(255,255,255,.65);
-
-  text-decoration:none;
-
-  word-break:break-word;
-
-}
-
-.footer-contact-item a:hover{
-  color:var(--teal2);
-}
-
-/* PARTE FINAL */
-
-.footer-contact-item{
-display:flex;
-align-items:flex-start;
-gap:10px;
-margin-bottom:12px;
-font-size:13px;
-color:rgba(255,255,255,.5);
-line-height:1.6;
-word-break:break-word;
-overflow-wrap:break-word;
-}
-
-.footer-contact-item span{
-flex-shrink:0;
-margin-top:2px;
-}
-
-.footer-contact-item a{
-color:rgba(255,255,255,.65);
-text-decoration:none;
-word-break:break-word;
-overflow-wrap:break-word;
-transition:color .2s;
-}
-
-.footer-contact-item a:hover{
-color:white;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:900px){
-
-.footer-top{
-display:grid;
-grid-template-columns:
-minmax(260px,3fr)
-minmax(160px,2fr)
-minmax(160px,2fr)
-minmax(220px,2fr);
-gap:40px;
-padding-bottom:48px;
-border-bottom:1px solid rgba(255,255,255,.08);
-margin-bottom:32px;
-
-
-}
+footer{background:#04111D;padding:60px 5% 32px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:3fr 2fr 2fr 2fr;gap:60px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:32px;}
+.footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.footer-logo-icon{width:36px;height:36px;flex-shrink:0;}
+.footer-logo-name{font-family:var(--font-display);font-weight:700;font-size:18px;color:white;}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6;}
+.footer-slogan{font-size:11px;color:var(--teal2);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-top:10px;font-style:italic;}
+.footer-col-title{font-size:11px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:white;}
+.footer-contact-item{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:13px;color:rgba(255,255,255,.5);}
+.footer-contact-item span{font-size:15px;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3);}
+.footer-stps{background:rgba(11,143,173,.15);border:1px solid rgba(11,143,173,.25);border-radius:6px;padding:4px 12px;font-size:10px;font-weight:700;color:var(--teal2);letter-spacing:.8px;}
 .whatsapp-float{position:fixed;bottom:32px;right:32px;z-index:500;width:56px;height:56px;border-radius:50%;background:#25D366;box-shadow:0 8px 32px rgba(37,211,102,.4);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;animation:floatBounce 3s ease-in-out infinite;}
 .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 12px 48px rgba(37,211,102,.6);}
 @keyframes floatBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
@@ -663,26 +452,7 @@ margin-bottom:32px;
   }
 
 }
-footer{
-overflow:hidden;
-}
 
-.footer-inner{
-width:100%;
-overflow:hidden;
-}
-
-.footer-bottom{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
-justify-content:space-between;
-line-height:1.6;
-}
-
-.footer-bottom span{
-word-break:break-word;
-}
 
   
 </style>
@@ -1152,15 +922,7 @@ word-break:break-word;
         <div class="footer-col-title">Contacto</div>
         <div class="footer-contact-item"><span>📍</span> Estado de México / CDMX</div>
         <div class="footer-contact-item"><span>📱</span> +52 55 4694 0382</div>
-        <div class="footer-contact-item">
-
-  <span>✉</span>
-
-  <a href="mailto:capacitacion.empresarial.ch@gmail.com">
-    capacitacion.empresarial.ch@gmail.com
-  </a>
-
-</div>
+        <div class="footer-contact-item"><span>✉</span> capacitacion.empresarial.ch@gmail.com</div>
         <div class="footer-contact-item"><span>🌐</span> Servicio Remoto · Todo México</div>
       </div>
     </div>
