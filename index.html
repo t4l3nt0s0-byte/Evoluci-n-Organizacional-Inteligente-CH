@@ -305,7 +305,7 @@ footer{background:#04111D;padding:60px 5% 32px;}
   .cursor,.cursor-ring{display:none;}body{cursor:auto;}
 }
 </style>
-  
+  <!-- AGREGADO CALENDARIO -->
   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css' rel='stylesheet' />
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
 
@@ -803,7 +803,7 @@ document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener(
 </script>
 
 
-    <!-- CALENDARIO -->  
+    <!-- FORMULARIO PARTE -->  
 <script>
 document
 .getElementById("formDiagnostico")
@@ -844,7 +844,7 @@ document
   try {
 console.log("ENVIANDO FETCH");
     await fetch(      
-      "https://script.google.com/macros/s/AKfycbwfMtyJYvIF89tJ8uAKdz1JwOzldkzA-XvnzXwbWXeT9Bo0FH0bAY8f7a_9lDeEYAPR/exec",
+      "https://script.google.com/macros/s/AKfycbxE1Xwzgr50K9dGWgRIaCAL3vECsvhZJZs5BC9J117hdny6xuwk5eu5fXgYkdd5DBOu/exec",
       {
         method: "POST",
         mode: "no-cors",
@@ -865,7 +865,7 @@ console.log("ENVIANDO FETCH");
 });
 </script>
 
-      
+      <!-- CALENDARIO PARTE -->   
       <section id="agenda">
   <div class="section-inner">
     <h2>Agenda de citas</h2>
@@ -894,7 +894,7 @@ document.addEventListener('DOMContentLoaded', function () {
         dateClick: async function(info) {
 
   const response = await fetch(
-    "TU_URL_APPS_SCRIPT"
+    "https://script.google.com/macros/s/AKfycbxE1Xwzgr50K9dGWgRIaCAL3vECsvhZJZs5BC9J117hdny6xuwk5eu5fXgYkdd5DBOu/exec"
   );
 
   const citas = await response.json();
