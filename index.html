@@ -811,35 +811,50 @@ document
 
   button.innerText = "Enviando...";
 
-  const data = {
+  const formData = new FormData();
 
-    nombre: document.getElementById("nombre").value,
+  formData.append(
+    "nombre",
+    document.getElementById("nombre").value
+  );
 
-    empresa: document.getElementById("empresa").value,
+  formData.append(
+    "empresa",
+    document.getElementById("empresa").value
+  );
 
-    email: document.getElementById("email").value,
+  formData.append(
+    "email",
+    document.getElementById("email").value
+  );
 
-    telefono: document.getElementById("telefono").value,
+  formData.append(
+    "telefono",
+    document.getElementById("telefono").value
+  );
 
-    sector: document.getElementById("sector").value,
+  formData.append(
+    "sector",
+    document.getElementById("sector").value
+  );
 
-    servicio: document.getElementById("servicio").value,
+  formData.append(
+    "servicio",
+    document.getElementById("servicio").value
+  );
 
-    mensaje: document.getElementById("mensaje").value
-
-  };
+  formData.append(
+    "mensaje",
+    document.getElementById("mensaje").value
+  );
 
   try {
 
     await fetch(
-      "https://script.google.com/macros/s/AKfycbw-DP7JrG1_Y27jOn0E7Al7SRIcOCoQcAPoxlbPII_XSEZidsiyGp61qEpAzvzM8oNY/exec",
+      "https://script.google.com/macros/s/AKfycbyVGM7_5YhjoBxI1cYHNdWm23-qU4g_rsUD2_N7wxMSNL59Hw62pEsvGNjmr-nxM145/exec",
       {
         method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
+        body: formData
       }
     );
 
@@ -859,7 +874,8 @@ document
 
   button.disabled = false;
 
-  button.innerText = "Solicitar Diagnóstico Gratuito →";
+  button.innerText =
+  "Solicitar Diagnóstico Gratuito →";
 
 });
 
