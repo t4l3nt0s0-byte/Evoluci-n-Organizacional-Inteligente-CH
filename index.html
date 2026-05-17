@@ -850,13 +850,14 @@ document
 
   try {
 
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbyVGM7_5YhjoBxI1cYHNdWm23-qU4g_rsUD2_N7wxMSNL59Hw62pEsvGNjmr-nxM145/exec",
-      {
-        method: "POST",
-        body: formData
-      }
-    );
+  await fetch(
+  "https://script.google.com/macros/s/AKfycbyVGM7_5YhjoBxI1cYHNdWm23-qU4g_rsUD2_N7wxMSNL59Hw62pEsvGNjmr-nxM145/exec",
+  {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  }
+);
 
     alert("Diagnóstico enviado correctamente");
 
