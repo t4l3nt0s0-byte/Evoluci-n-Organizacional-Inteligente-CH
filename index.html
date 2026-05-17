@@ -305,6 +305,10 @@ footer{background:#04111D;padding:60px 5% 32px;}
   .cursor,.cursor-ring{display:none;}body{cursor:auto;}
 }
 </style>
+  
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
 </head>
 <body>
 
@@ -585,7 +589,7 @@ footer{background:#04111D;padding:60px 5% 32px;}
           <div class="contact-feat"><div class="contact-feat-icon">✅</div><div class="contact-feat-text"><strong>Constancias y documentación STPS</strong>DC-3 y DC-4 incluidos en servicios de capacitación</div></div>
         </div>
       </div>
-    <!-- Actualizacion -->  
+    <!-- Actualizacion FORMULARIO GOGLE SHEET -->  
       <div class="contact-form reveal reveal-delay-2">
 
   <div class="form-title">
@@ -798,90 +802,99 @@ window.addEventListener('scroll',()=>{const y=window.scrollY;document.querySelec
 document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`translateY(-4px) rotateX(${-y*3}deg) rotateY(${x*3}deg)`;});card.addEventListener('mouseleave',()=>card.style.transform='');});
 </script>
 
-<script>
 
+    <!-- CALENDARIO -->  
+<script>
 document
 .getElementById("formDiagnostico")
 .addEventListener("submit", async function(e){
-
   e.preventDefault();
-
   const button = document.querySelector(".form-submit");
-
   button.disabled = true;
-
   button.innerText = "Enviando...";
-
   const formData = new FormData();
-
   formData.append(
     "nombre",
     document.getElementById("nombre").value
   );
-
   formData.append(
     "empresa",
     document.getElementById("empresa").value
   );
-
   formData.append(
     "email",
     document.getElementById("email").value
   );
-
   formData.append(
     "telefono",
     document.getElementById("telefono").value
   );
-
   formData.append(
     "sector",
     document.getElementById("sector").value
   );
-
   formData.append(
     "servicio",
     document.getElementById("servicio").value
   );
-
   formData.append(
     "mensaje",
     document.getElementById("mensaje").value
   );
-
   try {
 console.log("ENVIANDO FETCH");
-    await fetch(
-      
-      "https://script.google.com/macros/s/AKfycbyl271W9JM0xd3UWiEaTUmK8Jlfeag-Ic5c5vXjNIWh-Yt11LjbeyFRQS6dDkhm5cZm/exec",
+    await fetch(      
+      "https://script.google.com/macros/s/AKfycbyGFmFat2h0gTk0BHESJr9LG47qARzNtPVUBeIezotb72lwJnL73UEdwZ_AriYh/exec",
       {
         method: "POST",
         mode: "no-cors",
         body: formData
       }
     );
-
-    alert("✔ Diagnóstico enviado correctamente Te contactaremos en menos de 24 horas");
-
+    alert("✔ Diagnóstico enviado correctamente. Te contactaremos en menos de 24 horas");
     document
     .getElementById("formDiagnostico")
     .reset();
-
   } catch(error){
-
     console.error(error);
-
     alert("Error al enviar formulario");
-
   }
-
   button.disabled = false;
-
   button.innerText =
   "Solicitar Diagnóstico Gratuito →";
-
 });
+</script>
 
+      
+      <section id="agenda">
+  <div class="section-inner">
+    <h2>Agenda de citas</h2>
+    <div id="calendar"></div>
+  </div>
+</section>
+
+
+
+      <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const calendarEl =
+    document.getElementById('calendar');
+  const calendar =
+    new FullCalendar.Calendar(
+      calendarEl,
+      {
+        initialView: 'dayGridMonth',
+        locale: 'es',
+        selectable: true,
+        dateClick: function(info) {
+          alert(
+            "Seleccionaste: " +
+            info.dateStr
+          );
+        }
+      });
+  calendar.render();
+});
 </script>
 </body>
 </html>
