@@ -844,7 +844,7 @@ document
   try {
 console.log("ENVIANDO FETCH");
     await fetch(      
-      "https://script.google.com/macros/s/AKfycbyGFmFat2h0gTk0BHESJr9LG47qARzNtPVUBeIezotb72lwJnL73UEdwZ_AriYh/exec",
+      "https://script.google.com/macros/s/AKfycbwwupcx4q5slCJlRfH38wrFloSJSLPjJSGfTw697Hwz_UViEtrNZZdNTjO36eobeFgE/exec",
       {
         method: "POST",
         mode: "no-cors",
@@ -886,12 +886,55 @@ document.addEventListener('DOMContentLoaded', function () {
         initialView: 'dayGridMonth',
         locale: 'es',
         selectable: true,
-        dateClick: function(info) {
-          alert(
-            "Seleccionaste: " +
-            info.dateStr
-          );
-        }
+
+
+
+
+
+        dateClick: async function(info) {
+
+  const response = await fetch(
+    "TU_URL_APPS_SCRIPT"
+  );
+
+  const citas = await response.json();
+
+  let horarios = "";
+
+  citas.forEach(c => {
+
+    if(c.fecha == info.dateStr){
+
+      horarios += `
+
+${c.estado === "LIBRE"
+? "🟢"
+: "🔴"}
+
+${c.hora}
+
+${c.estado === "OCUPADO"
+? c.nombre
+: "Disponible"}
+
+`;
+
+    }
+
+  });
+
+  alert(
+
+    "Fecha: " +
+    info.dateStr +
+
+    "\n\n" +
+
+    horarios
+
+  );
+
+}
       });
   calendar.render();
 });
