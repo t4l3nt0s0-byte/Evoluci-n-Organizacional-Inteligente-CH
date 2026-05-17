@@ -942,24 +942,7 @@ footer{background:#04111D;padding:60px 5% 32px;}
 </a>
 
 <script>
-// ─── Mobile menu
-const menuBtn = document.getElementById('menuBtn');
-const closeMenu = document.getElementById('closeMenu');
-const mobileMenu = document.getElementById('mobileMenu');
-menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
-document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-// ─── Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ─── Nav scroll effect
-window.addEventListener('scroll', () => {
-  document.querySelector('.nav').style.borderBottomColor = window.scrollY > 40 ? 'rgba(201,150,58,.2)' : 'rgba(201,150,58,.12)';
-});
 
 // ─── Form submit
 document.querySelector('.form-submit').addEventListener('click', () => {
