@@ -912,7 +912,7 @@ document.getElementById("formDiagnostico").addEventListener("submit",async funct
   formData.append("servicio",document.getElementById("servicio").value);
   formData.append("mensaje",document.getElementById("mensaje").value);
   try{
-    await fetch("https://script.google.com/macros/s/AKfycbwzK-m4aXeP34bfWxHCJYCrC9LzeAJbXVtcuR-7J-nuMRpDeurG2lgvx2UNWuDDFTCz/exec",{method:"POST",mode:"no-cors",body:formData});
+    await fetch("https://script.google.com/macros/s/AKfycbwN0RiBI11QAPpKPSQq2gjPStaN0TcuWLzwpapDjONpE8YJpuA1p__LXlbFMqWDQT3T/exec",{method:"POST",mode:"no-cors",body:formData});
     button.innerText="✅ ¡Solicitud enviada! Te contactamos en < 24 hrs";
     button.style.background="linear-gradient(135deg,#1A6B3A,#0D5A2E)";
     document.getElementById("formDiagnostico").reset();
@@ -923,119 +923,26 @@ document.getElementById("formDiagnostico").addEventListener("submit",async funct
   }
 });
 
-  
-dateClick: async function(info){
-
-  const response = await fetch(
-    "https://script.google.com/macros/s/AKfycbwzK-m4aXeP34bfWxHCJYCrC9LzeAJbXVtcuR-7J-nuMRpDeurG2lgvx2UNWuDDFTCz/exec"
-  );
-
-  const citas = await response.json();
-
-  let horarios = "";
-
-  citas.forEach(c => {
-
-    if(c.fecha == info.dateStr){
-
-      horarios +=
-        `${c.estado === "LIBRE" ? "🟢" : "🔴"} `
-        + c.hora
-        + " - "
-        + (
-          c.estado === "LIBRE"
-          ? "Disponible"
-          : c.nombre
-        )
-        + "\n";
-
+// CALENDARIO FullCalendar (original funcional)
+document.addEventListener('DOMContentLoaded',function(){
+  const calendarEl=document.getElementById('calendar');
+  const calendar=new FullCalendar.Calendar(calendarEl,{
+    initialView:'dayGridMonth',
+    locale:'es',
+    selectable:true,
+    height:'auto',
+    aspectRatio:1.8,
+    headerToolbar:{left:'prev',center:'title',right:'next'},
+    dateClick:async function(info){
+      const response=await fetch("https://script.google.com/macros/s/AKfycbwN0RiBI11QAPpKPSQq2gjPStaN0TcuWLzwpapDjONpE8YJpuA1p__LXlbFMqWDQT3T/exec");
+      const citas=await response.json();
+      let horarios="";
+      citas.forEach(c=>{if(c.fecha==info.dateStr){horarios+=`${c.estado==="LIBRE"?"🟢":"🔴"} ${c.hora} ${c.estado==="OCUPADO"?c.nombre:"Disponible"}\n`;}});
+      alert("📅 "+info.dateStr+"\n\n"+(horarios||"Sin citas agendadas este día.\nContáctanos para agendar."));
     }
-
   });
-
-  const horaSeleccionada = prompt(
-
-    "📅 Fecha: " +
-    info.dateStr +
-
-    "\n\n" +
-
-    horarios +
-
-    "\n\n" +
-
-    "Escribe la hora EXACTA.\nEjemplo: 09:00"
-
-  );
-
-  if(!horaSeleccionada){
-    return;
-  }
-
-  const nombre =
-    prompt("Nombre completo:");
-
-  if(!nombre){
-    return;
-  }
-
-  const telefono =
-    prompt("WhatsApp / teléfono:");
-
-  const tratamiento =
-    prompt(
-      "Servicio solicitado:"
-    );
-
-  const reserva = await fetch(
-
-    "https://script.google.com/macros/s/AKfycbwzK-m4aXeP34bfWxHCJYCrC9LzeAJbXVtcuR-7J-nuMRpDeurG2lgvx2UNWuDDFTCz/exec",
-
-    {
-
-      method: "POST",
-
-      body: JSON.stringify({
-
-        tipo: "reserva",
-
-        fecha: info.dateStr,
-
-        hora: horaSeleccionada,
-
-        nombre: nombre,
-
-        telefono: telefono,
-
-        tratamiento: tratamiento
-
-      })
-
-    }
-
-  );
-
-  const resultado =
-    await reserva.text();
-
-  if(resultado == "OK"){
-
-    alert(
-      "✅ Cita reservada correctamente"
-    );
-
-    location.reload();
-
-  } else {
-
-    alert(
-      "❌ Horario no disponible"
-    );
-
-  }
-
-}
-
+  calendar.render();
+});
 </script>
 </body>
 </html>
