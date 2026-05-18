@@ -912,7 +912,7 @@ document.getElementById("formDiagnostico").addEventListener("submit",async funct
   formData.append("servicio",document.getElementById("servicio").value);
   formData.append("mensaje",document.getElementById("mensaje").value);
   try{
-    await fetch("https://script.google.com/macros/s/AKfycbwN0RiBI11QAPpKPSQq2gjPStaN0TcuWLzwpapDjONpE8YJpuA1p__LXlbFMqWDQT3T/exec",{method:"POST",mode:"no-cors",body:formData});
+    await fetch("https://script.google.com/macros/s/AKfycbwcXATUJ95Xlv2m39sgERgYhTdPMBxDfyhPypqHXDhjVggO1a43FOTvwmJCHZxGXmv4/exec",{method:"POST",mode:"no-cors",body:formData});
     button.innerText="✅ ¡Solicitud enviada! Te contactamos en < 24 hrs";
     button.style.background="linear-gradient(135deg,#1A6B3A,#0D5A2E)";
     document.getElementById("formDiagnostico").reset();
@@ -924,25 +924,135 @@ document.getElementById("formDiagnostico").addEventListener("submit",async funct
 });
 
 // CALENDARIO FullCalendar (original funcional)
-document.addEventListener('DOMContentLoaded',function(){
-  const calendarEl=document.getElementById('calendar');
-  const calendar=new FullCalendar.Calendar(calendarEl,{
-    initialView:'dayGridMonth',
-    locale:'es',
-    selectable:true,
-    height:'auto',
-    aspectRatio:1.8,
-    headerToolbar:{left:'prev',center:'title',right:'next'},
-    dateClick:async function(info){
-      const response=await fetch("https://script.google.com/macros/s/AKfycbwN0RiBI11QAPpKPSQq2gjPStaN0TcuWLzwpapDjONpE8YJpuA1p__LXlbFMqWDQT3T/exec");
-      const citas=await response.json();
-      let horarios="";
-      citas.forEach(c=>{if(c.fecha==info.dateStr){horarios+=`${c.estado==="LIBRE"?"🟢":"🔴"} ${c.hora} ${c.estado==="OCUPADO"?c.nombre:"Disponible"}\n`;}});
-      alert("📅 "+info.dateStr+"\n\n"+(horarios||"Sin citas agendadas este día.\nContáctanos para agendar."));
+document.addEventListener('DOMContentLoaded', function () {
+
+  const calendarEl = document.getElementById('calendar');
+
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+
+    initialView: 'dayGridMonth',
+    locale: 'es',
+    selectable: true,
+    height: 'auto',
+
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: ''
+    },
+
+    dateClick: async function(info) {
+
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwcXATUJ95Xlv2m39sgERgYhTdPMBxDfyhPypqHXDhjVggO1a43FOTvwmJCHZxGXmv4/exec");
+
+      const citas = await response.json();
+
+      let horarios = [];
+
+      citas.forEach(c => {
+
+        if(c.fecha == info.dateStr){
+
+          horarios.push(c);
+
+        }
+
+      });
+
+      if(horarios.length == 0){
+
+        alert(
+          "📅 " + info.dateStr +
+          "\n\nNo hay horarios disponibles."
+        );
+
+        return;
+
+      }
+
+      let mensaje = "📅 " + info.dateStr + "\n\n";
+
+      horarios.forEach(h => {
+
+        mensaje +=
+          (h.estado == "LIBRE" ? "🟢" : "🔴")
+          + " "
+          + h.hora
+          + " "
+          + (h.estado == "LIBRE"
+            ? "Disponible"
+            : h.nombre)
+          + "\n";
+
+      });
+
+      const hora = prompt(
+        mensaje +
+        "\n\nEscribe la hora exacta que deseas reservar:"
+      );
+
+      if(!hora) return;
+
+      const nombre = prompt("Nombre:");
+
+      if(!nombre) return;
+
+      const telefono = prompt("Teléfono:");
+
+      if(!telefono) return;
+
+      const servicio = prompt("Servicio:");
+
+      if(!servicio) return;
+
+      const guardar = await fetch(
+        "https://script.google.com/macros/s/AKfycbwcXATUJ95Xlv2m39sgERgYhTdPMBxDfyhPypqHXDhjVggO1a43FOTvwmJCHZxGXmv4/exec",
+        {
+
+          method: "POST",
+
+          body: JSON.stringify({
+
+            tipo: "reserva",
+
+            fecha: info.dateStr,
+
+            hora: hora,
+
+            nombre: nombre,
+
+            telefono: telefono,
+
+            servicio: servicio
+
+          })
+
+        }
+      );
+
+      const resultado = await guardar.text();
+
+      if(resultado == "CITA OK"){
+
+        alert("✅ Cita reservada");
+
+        location.reload();
+
+      } else {
+
+        alert("❌ Horario no disponible");
+
+      }
+
     }
+
   });
+
   calendar.render();
+
 });
+
+  
 </script>
 </body>
 </html>
