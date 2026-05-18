@@ -912,7 +912,7 @@ document.getElementById("formDiagnostico").addEventListener("submit",async funct
   formData.append("servicio",document.getElementById("servicio").value);
   formData.append("mensaje",document.getElementById("mensaje").value);
   try{
-    await fetch("https://script.google.com/macros/s/AKfycbxsNz8r9DWJ7ZoH1WIE2zZiWTvYl-Ky5OXhea1ynNyisaopz3-xeHj2_2YV7qF3rnDu/exec",{method:"POST",mode:"no-cors",body:formData});
+    await fetch("https://script.google.com/macros/s/AKfycbzwFFPQOuqJ3ls10p8H0u6cdosgMiGBXfYtgtU8CGmXCEnBS_7w5hft6mE2iUre6G7X/exec",{method:"POST",mode:"no-cors",body:formData});
     button.innerText="✅ ¡Solicitud enviada! Te contactamos en < 24 hrs";
     button.style.background="linear-gradient(135deg,#1A6B3A,#0D5A2E)";
     document.getElementById("formDiagnostico").reset();
@@ -934,7 +934,7 @@ document.addEventListener('DOMContentLoaded',function(){
     aspectRatio:1.8,
     headerToolbar:{left:'prev',center:'title',right:'next'},
     dateClick:async function(info){
-      const response=await fetch("https://script.google.com/macros/s/AKfycbxsNz8r9DWJ7ZoH1WIE2zZiWTvYl-Ky5OXhea1ynNyisaopz3-xeHj2_2YV7qF3rnDu/exec");
+      const response=await fetch("https://script.google.com/macros/s/AKfycbzwFFPQOuqJ3ls10p8H0u6cdosgMiGBXfYtgtU8CGmXCEnBS_7w5hft6mE2iUre6G7X/exec");
       const citas=await response.json();
       let horarios="";
       citas.forEach(c=>{if(c.fecha==info.dateStr){horarios+=`${c.estado==="LIBRE"?"🟢":"🔴"} ${c.hora} ${c.estado==="OCUPADO"?c.nombre:"Disponible"}\n`;}});
