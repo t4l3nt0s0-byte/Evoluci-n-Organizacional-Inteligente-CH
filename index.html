@@ -904,6 +904,7 @@ document.getElementById("formDiagnostico").addEventListener("submit",async funct
   const button=document.querySelector(".form-submit");
   button.disabled=true;button.innerText="Enviando...";
   const formData=new FormData();
+   formData.append("tipo","lead");
   formData.append("nombre",document.getElementById("nombre").value);
   formData.append("empresa",document.getElementById("empresa").value);
   formData.append("email",document.getElementById("email").value);
