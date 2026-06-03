@@ -1059,5 +1059,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   
 </script>
+<script>
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        history.replaceState(
+            null,
+            document.title,
+            window.location.pathname
+        );
+    }
+
+    window.scrollTo(0, 0);
+});
+</script>
 </body>
 </html>
